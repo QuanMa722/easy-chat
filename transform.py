@@ -1,6 +1,7 @@
 
 # -*- coding: utf-8 -*-
 
+# 导入需要的第三方库
 import base64
 import hashlib
 import hmac
@@ -10,8 +11,6 @@ import time
 import requests
 import urllib
 import re
-
-
 
 
 class RequestApi(object):

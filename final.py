@@ -101,11 +101,11 @@ class GUI:
 
 class Audio:
     # 录音设置
-    FORMAT = pyaudio.paInt16  # 表示音频样本的格式，表示16位整数音频格式。
-    CHANNELS = 1  # 指定音频通道的数量，表示单声道音频。
-    RATE = 44100  # 常见采样率
-    CHUNK = 1024  # 确定每个缓冲区中的帧数
-    WAVE_OUTPUT_FILENAME = "speak_wav\\output.wav"  # 录制存放地址
+    FORMAT = pyaudio.paInt16
+    CHANNELS = 1
+    RATE = 44100
+    CHUNK = 1024
+    WAVE_OUTPUT_FILENAME = "speak_wav\\output.wav"
 
     def __init__(self, time):
         self.time = time
@@ -128,12 +128,10 @@ class Audio:
 
         print("Finished recording.")
 
-        # 停止录制
         stream.stop_stream()
         stream.close()
         audio.terminate()
 
-        # 保存录音为.wav文件
         with wave.open(self.WAVE_OUTPUT_FILENAME, 'wb') as wf:
             wf.setnchannels(self.CHANNELS)
             wf.setsampwidth(audio.get_sample_size(self.FORMAT))
@@ -173,14 +171,14 @@ class Say:
 
     def set(self):
 
-        rate = self.engine.getProperty('rate')  # 获取当前语速的详细信息
+        rate = self.engine.getProperty('rate')
         self.engine.setProperty('rate', 200)
 
-        volume = self.engine.getProperty('volume')  # 获取当前音量（最小为0，最大为1）
-        self.engine.setProperty('volume', 1)  # 在0到1之间重设音量
+        volume = self.engine.getProperty('volume')
+        self.engine.setProperty('volume', 1)
 
-        # voices = self.engine.getProperty('voices')  # 获取当前发音的详细信息
-        # self.engine.setProperty('voice', voices[0].id)  # 设置第一个语音合成器
+        # voices = self.engine.getProperty('voices')
+        # self.engine.setProperty('voice', voices[0].id)
 
         print(f"rate: {rate} volume: {volume}")
 
