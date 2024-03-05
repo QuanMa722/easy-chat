@@ -13,7 +13,7 @@ class GPT:
     )
 
     def __init__(self, message):
-        self.message = message  # 获取传入信息
+        self.message = message
 
     def gpt_35_api(self) -> str:
         """
